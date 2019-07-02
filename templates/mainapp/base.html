@@ -1,0 +1,182 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="hy">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta name="robots" content="index">
+	<meta name="robots" content="follow">
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+    <title>ArmNews Գլխավոր Էջ</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'img/apple-touch-icon.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'img/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'img/favicon-16x16.png' %}">
+    <link rel="shortcut icon" href="{% static 'img/favicon.ico' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/animate.css' %}">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/slick-theme.css' %}">
+    <link rel="stylesheet" href="{% static 'css/slick.css' %}">
+</head>
+<body>
+    <header style="background-color: #0071AE">
+        <section class="header container">
+            <div class="header_left">
+                <div class="header_logo" title="Գլխավոր">
+                    <a href="/">
+                        <img src="{% static 'img/logo_png.png' %}" alt="logo">
+                    </a>
+                </div>
+            </div>
+            <div class="header_center">
+                <p>ArmnNews 106.9 ուղիղ եթեր</p>
+                <script type="text/javascript" src="https://hosted.muses.org/mrp.js"></script>
+                <script type="text/javascript">
+
+                    MRP.insert({
+                        'url': 'http://s7.voscast.com:10196/armnews',
+                        'lang': 'hy',
+                        'codec': 'mp3',
+                        'volume': 65,
+                        'autoplay': true,
+                        'forceHTML5': true,
+                        'jsevents': true,
+                        'buffering': 0,
+                        'title': 'ArmNews 106.9',
+                        'welcome': 'Բարլուս ազիզ',
+                        'wmode': 'transparent',
+                        'skin': 'faredirfare',
+                        'width': 270,
+                        'height': 52
+                    });
+                </script>
+            </div>
+            <div class="header_right">
+                <a href="#" title="Հայերեն">
+                    <div class="language_flag">
+                        <img src="{% static 'img/ARM.png' %}" alt="arm">
+                    </div>
+                    <div class="language_name">
+                        ՀԱՅ
+                    </div>
+                </a>
+                <a href="#" title="Русский">
+                    <div class="language_flag">
+                        <img src="{% static 'img/RUS.png' %}" alt="rus">
+                    </div>
+                    <div class="language_name">
+                        РУС
+                    </div>
+                </a>
+                <a href="#" title="English">
+                    <div class="language_flag">
+                        <img src="{% static 'img/ENG.png' %}" alt="eng">
+                    </div>
+                    <div class="language_name">
+                        ENG
+                    </div>
+                </a>
+            </div>
+        </section>
+    </header>
+    <nav style="background-color: #0071AE">
+        <section class="nav container">
+            <div class="menuBtn">
+                <img src="{% static 'img/menu.png' %}" alt="menu">
+            </div>
+            <ul class="nav_menu">
+                <div class="close_menu">
+                    <img src="{% static 'img/cancel.png' %}" alt="close">
+                </div>
+                <li><a href="/interviews">{{ header_items.title_1_hy }}</a></li>
+                <li><a href="projects.html">{{ header_items.title_2_hy }}</a></li>
+                <li><a href="broadcast.html">{{ header_items.title_3_hy }}</a></li>
+                <li><a href="blog.html">{{ header_items.title_4_hy }}</a></li>
+                <li><a href="aboutus.html">{{ header_items.title_5_hy }}</a></li>
+                <div class="search_area">
+                    <input type="search" placeholder="Որոնում...">
+                    <img src="{% static 'img/srch.png' %}" alt="search" class="searchBtn">
+                </div>
+            </ul>
+            <div class="video_audio">
+                <a href="{{ header_items.listen_url }}">
+                    <img src="{% static 'img/listen.png' %}" alt="listen" class="eye">
+                    ԼՍԵԼ
+                </a>
+                <a href="{{ header_items.watch_url }}">
+                    <img src="{% static 'img/watch.png' %}" alt="watch" class="mic">
+                    ԴԻՏԵԼ
+                </a>
+            </div>
+        </section>
+    </nav>
+    <main>
+        <div class="btn-up">
+            <img src="{% static 'img/upBtn.png' %}" alt="up">
+        </div>
+        <div class="fixed_social">
+            <a href="{{ footer.facebook }}" target="_blank">
+                <img src="{% static 'img/facebook.png' %}" alt="social_icon">
+            </a>
+            <a href="{{ footer.yuotube }}" target="_blank">
+                <img src="{% static 'img/youtube.png' %}" alt="social_icon">
+            </a>
+            <a href="{{ footer.soundcloud }}" target="_blank">
+                <img src="{% static 'img/soundcloud.png' %}" alt="social_icon">
+            </a>
+        </div>
+        {% block content %}
+
+        {% endblock %}
+
+
+        <section class="download_section" style="background-color: #0071AE">
+        <section class="download_items container">
+            <div class="footer_logo">
+                <a href="index.html">
+                    <img src="{% static 'img/logo_png.png' %}" alt="logo">
+                </a>
+            </div>
+            <div class="download_social">
+                <div class="download">
+                    <a href="{{ footer.appstore_url }}" title="Ներբեռնել հավելվածը App Store-ից">
+                        <img src="{% static 'img/as.png' %}" alt="apple">
+                    </a>
+                    <a href="{{ footer.playmarket_url }}" title="Ներբեռնել հավելվածը Play Market-ից">
+                        <img src="{% static 'img/gp.png' %}" alt="google play">
+                    </a>
+                </div>
+                <div class="footer_social">
+                    <a href="{{ footer.facebook }}" target="_blank">
+                        <img src="{% static 'img/facebook.png' %}" alt="social_icon">
+                    </a>
+                    <a href="{{ footer.yuotube }}" target="_blank">
+                        <img src="{% static 'img/youtube.png' %}" alt="social_icon">
+                    </a>
+                    <a href="{{ footer.soundcloud }}" target="_blank">
+                        <img src="{% static 'img/soundcloud.png' %}" alt="social_icon">
+                    </a>
+                </div>
+            </div>
+        </section>
+    </section>
+    </main>
+
+
+    <footer style="background-color: #0071AE">
+        <section class="footer container">
+            <div class="footer_left">
+                &copy; <span class="web_year">{{ footer.year|date:'Y' }} {{ footer.text_hy|safe }}</span>
+            </div>
+            <div class="footer_right">
+                <a href="https://www.hayrapetyanstyle.com/" target="_blank">HayrapetyanStyle</a>
+            </div>
+        </section>
+    </footer>
+
+    <script src="{% static 'js/all.js' %}"></script>
+</body>
+</html>

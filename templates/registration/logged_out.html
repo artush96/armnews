@@ -1,0 +1,12 @@
+{% extends "admin/base_site.html" %}
+{% load i18n %}
+
+{% block breadcrumbs %}<div class="breadcrumbs"><a href="{% url 'admin:index' %}">{% trans 'Գլխավոր' %}</a></div>{% endblock %}
+
+{% block content %}
+
+<p>{% trans "Շնորհակալ ենք կայքի որակի հետ կապված որոշակի ժամանակ անցկացնելու համար:" %}</p>
+
+<p><a href="{% url 'admin:index' %}">{% trans 'Մուտք գործել նորից' %}</a></p>
+
+{% endblock %}

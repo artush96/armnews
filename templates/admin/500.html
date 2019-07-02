@@ -1,0 +1,17 @@
+{% extends "admin/base_site.html" %}
+{% load i18n %}
+
+{% block breadcrumbs %}
+<div class="breadcrumbs">
+<a href="{% url 'admin:index' %}">{% trans 'Գլխավոր' %}</a>
+&rsaquo; {% trans 'Սերվերի սխալը' %}
+</div>
+{% endblock %}
+
+{% block title %}{% trans 'Սերվերի սխալը (500)' %}{% endblock %}
+
+{% block content %}
+<h1>{% trans 'Սերվերի սխալը <em>(500)</em>' %}</h1>
+<p>{% trans 'Կա սխալ: Կայքի ադմինիստրատորներին էլեկտրոնային փոստով հաղորդվում է եւ պետք է շտկվի շուտով: Շնորհակալություն ձեր համբերության համար.' %}</p>
+
+{% endblock %}

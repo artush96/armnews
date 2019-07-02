@@ -1,0 +1,130 @@
+{% extends 'mainapp/base.html' %}
+{% load static %}
+{% block content %}
+    <section class="staff_bg">
+        <img src="{{ gen_pic.general_picture.url }}" alt="staf">
+    </section>
+    <section class="live_top container">
+        <div class="live_stream">
+            <div class="video_wrap">
+                {{ yt_url.yt_url|safe }}
+            </div>
+        </div>
+        <div class="top_content">
+            <h2>Թոփ նորություններ</h2>
+            <div class="top_items">
+                {% for top_new in top_news %}
+                    <a href="{{ top_new.url }}" class="top_item hover">
+                        <div class="top_item_cover">
+                            <img src="{{ top_new.image.url }}" alt="item">
+                        </div>
+                        <div class="top_item_text">
+                            <h3>{{ top_new.title_hy }}</h3>
+                            <p>{{ top_new.body_hy|safe }}</p>
+                        </div>
+                    </a>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    <section class="main_parralax" style="background-color: #0071AE">
+        <section class="main_items container">
+            <section class="main_items_content">
+                <h1 class="h1_title wow bounceInLeft" data-wow-duration="1.5s"
+                    data-wow-offset="30">{{ header_items.title_1_hy }}</h1>
+                {% for interview in interviews %}
+                    <div class="main_item hover wow zoomIn">
+                        <div class="main_item_cover">
+                            <a href="#">
+                                <img src="{{ interview.image.url }}" alt="item">
+                            </a>
+                        </div>
+                        <div class="main_item_text">
+                            <h2><a href="#">{{ interview.title_hy }}</a></h2>
+                            <p>{% autoescape on %}
+                                {{ interview.body_hy|safe|truncatewords_html:20 }}{% endautoescape %} </p>
+                        </div>
+                    </div>
+                {% endfor %}
+            </section>
+            <section class="main_items_content">
+                <h1 class="h1_title wow bounceInLeft" data-wow-duration="1.5s"
+                    data-wow-offset="30">{{ header_items.title_2_hy }}</h1>
+                {% for program in programs %}
+                    <div class="main_item hover wow zoomIn">
+                        <div class="main_item_cover">
+                            <a href="#">
+                                <img src="{{ program.image.url }}" alt="item">
+                            </a>
+                        </div>
+                        <div class="main_item_text">
+                            <h2><a href="#">{{ program.title_hy }}</a></h2>
+                            <p>{{ program.body_hy|safe|truncatewords_html:20 }}</p>
+                        </div>
+                    </div>
+                {% endfor %}
+            </section>
+            <section class="main_items_content">
+                <h1 class="h1_title wow bounceInLeft" data-wow-duration="1.5s" data-wow-offset="30">Տեսանյութեր</h1>
+                <div class="main_video video1 wow zoomIn">
+                    <div class="video_wrap">
+                        {{ videos.url_1|safe }}
+                    </div>
+                </div>
+                <div class="main_video video2 wow zoomIn">
+                    <div class="video_wrap">
+                        {{ videos.url_2|safe }}
+                    </div>
+                </div>
+                <div class="main_video video3 wow zoomIn">
+                    <div class="video_wrap">
+                        {{ videos.url_3|safe }}
+                    </div>
+                </div>
+                <div class="main_video video4 wow zoomIn">
+                    <div class="video_wrap">
+                        {{ videos.url_4|safe }}
+                    </div>
+                </div>
+            </section>
+            <section class="main_items_content">
+                <h1 class="h1_title wow bounceInLeft" data-wow-duration="1.5s"
+                    data-wow-offset="30">{{ header_items.title_4_hy }}</h1>
+                {% for foo in blog %}
+                    <div class="main_item hover wow zoomIn">
+                        <div class="main_item_cover">
+                            <a href="#">
+                                <img src="{{ foo.image.url }}" alt="item">
+                            </a>
+                        </div>
+                        <div class="main_item_text">
+                            <h2><a href="#">{{ foo.title_hy }}</a></h2>
+                            <p>{{ foo.body_hy|safe|truncatewords_html:20 }}</p>
+                        </div>
+                    </div>
+                {% endfor %}
+            </section>
+        </section>
+    </section>
+    <section class="main_parnters container">
+        <h1 class="h1_title">
+            Մեր Գործընկերները
+        </h1>
+
+
+        <a href="{{ partners.url_1 }}" class="partner_logo">
+            <img src="{{ partners.image_1.url }}" alt="partner_logo">
+        </a>
+        <a href="{{ partners.url_2 }}" class="partner_logo">
+            <img src="{{ partners.image_2.url }}" alt="partner_logo">
+        </a>
+        <a href="{{ partners.url_3 }}" class="partner_logo">
+            <img src="{{ partners.image_3.url }}" alt="partner_logo">
+        </a>
+        <a href="{{ partners.url_4 }}" class="partner_logo">
+            <img src="{{ partners.image_4.url }}" alt="partner_logo">
+        </a>
+
+    </section>
+
+{% endblock %}
