@@ -87,6 +87,46 @@ def interviews(request):
     return render(request, 'mainapp/interviews.html', context=context)
 
 
+def programs(request):
+    header_items = Header.objects.all().first()
+    programs = Programs.objects.all()
+    slider = Slider.objects.all()
+    interviews_random = Interview.objects.order_by("?")[:10]
+    footer = Footer.objects.all().first()
+
+    paginator = Paginator(programs, 4)
+
+    page_number = request.GET.get('page', 1)
+    page = paginator.get_page(page_number)
+
+    is_paginated = page.has_other_pages()
+
+    if page.has_previous():
+        prev_url = '?page={}'.format(page.previous_page_number())
+    else:
+        prev_url = ''
+
+    if page.has_next():
+        next_url = '?page={}'.format(page.next_page_number())
+    else:
+        next_url = ''
+
+
+    context = {
+        'header_items': header_items,
+        'programs': programs,
+        'slider': slider,
+        'interviews_random': interviews_random,
+        'page_object': page,
+        'is_paginated': is_paginated,
+        'prev_url': prev_url,
+        'next_url': next_url,
+        'footer': footer,
+    }
+
+    return render(request, 'mainapp/projects.html', context=context)
+
+
 
 
 

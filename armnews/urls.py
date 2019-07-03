@@ -19,7 +19,6 @@ from django.conf import settings
 from django.contrib.staticfiles.urls import static
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
-from mainapp import  views
 
 admin.site.site_header = "ArmNews Admin"
 admin.site.site_title = "ArmNews Admin"
