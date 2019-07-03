@@ -1,392 +1,76 @@
-<!DOCTYPE html>
-<html lang="hy">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="robots" content="index">
-    <meta name="robots" content="follow">
-    <meta name="description" content="">
-    <meta name="keywords" content="">
-    <title>ArmNews Ծրագրեր</title>
-    <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
-    <link rel="shortcut icon" href="img/favicon.ico">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/slick-theme.css">
-    <link rel="stylesheet" href="css/slick.css">
-    <link rel="stylesheet" href="css/styles.css">
-</head>
-<body>
-    <header style="background-color: #0071AE">
-        <section class="header container">
-            <div class="header_left">
-                <div class="header_logo" title="Գլխավոր">
-                    <a href="index.html">
-                        <img src="img/logo_png.png" alt="logo">
-                    </a>
+{% extends 'base.html' %}
+
+{% block content %}
+    <section class="main_top_slider">
+        <div class="fade">
+            {% for foo in slider %}
+                <div class="fade_item">
+                    <img src="{{ foo.image.url }}" alt="bg">
                 </div>
-            </div>
-            <div class="header_center">
-                <p>ArmnNews 106.9 ուղիղ եթեր</p>
-                <script type="text/javascript" src="https://hosted.muses.org/mrp.js"></script>
-                <script type="text/javascript">
-                    MRP.insert({
-                    'url':'http://s7.voscast.com:10196/armnews',
-                    'lang':'hy',
-                    'codec':'mp3',
-                    'volume':65,
-                    'autoplay': true,
-                    'forceHTML5':true,
-                    'jsevents':true,
-                    'buffering':0,
-                    'title':'ArmNews 106.9',
-                    'welcome':'Բարլուս ազիզ',
-                    'wmode':'transparent',
-                    'skin':'faredirfare',
-                    'width':270,
-                    'height':52
-                    });
-                </script>
-            </div>
-            <div class="header_right">
-                <a href="#" title="Հայերեն">
-                    <div class="language_flag">
-                        <img src="img/ARM.png" alt="arm">
-                    </div>
-                    <div class="language_name">
-                        ՀԱՅ
-                    </div>
-                </a>
-                <a href="#" title="Русский">
-                    <div class="language_flag">
-                        <img src="img/RUS.png" alt="rus">
-                    </div>
-                    <div class="language_name">
-                        РУС
-                    </div>
-                </a>
-                <a href="#" title="English">
-                    <div class="language_flag">
-                        <img src="img/ENG.png" alt="eng">
-                    </div>
-                    <div class="language_name">
-                        ENG
-                    </div>
-                </a>
-            </div>
-        </section>
-    </header>
-    <nav style="background-color: #0071AE">
-        <section class="nav container">
-            <div class="menuBtn">
-                <img src="img/menu.png" alt="menu">
-            </div>
-            <ul class="nav_menu">
-                <div class="close_menu">
-                    <img src="img/cancel.png" alt="close">
-                </div>
-                <li><a href="interviews.html">Հարցազրույցներ</a></li>
-                <li><a href="projects.html">Ծրագրեր</a></li>
-                <li><a href="broadcast.html">Հաղորդացանց</a></li>
-                <li><a href="blog.html">Բլոգ</a></li>
-                <li><a href="aboutus.html">Մեր մասին</a></li>
-                <div class="search_area">
-                    <input type="search" placeholder="Որոնում...">
-                    <img src="img/srch.png" alt="search" class="searchBtn">
-                </div>
-            </ul>
-            <div class="video_audio">
-                <a href="#">
-                    <img src="img/listen.png" alt="listen" class="eye">
-                    ԼՍԵԼ
-                </a>
-                <a href="#">
-                    <img src="img/watch.png" alt="watch" class="mic">
-                    ԴԻՏԵԼ
-                </a>
-            </div>
-        </section>
-    </nav>
-    <main>
-        <div class="btn-up">
-            <img src="img/upBtn.png" alt="up">
+            {% endfor %}
         </div>
-        <div class="fixed_social">
-            <a href="https://www.facebook.com/ArmnewsFM/" target="_blank">
-                <img src="img/fb.png" alt="social_icon">
-            </a>
-            <a href="https://www.youtube.com/channel/UC7af1d7soX2vpl4m2hG-S1Q" target="_blank">
-                <img src="img/yt.png" alt="social_icon">
-            </a>
-            <a href="https://soundcloud.com/user-765957114" target="_blank">
-                <img src="img/sc.png" alt="social_icon">
-            </a>
-        </div>
-        <section class="main_top_slider">
-            <div class="fade">
-                <div class="fade_item">
-                    <img src="img/bg1.jpg" alt="bg">
-                </div>
-                <div class="fade_item">
-                    <img src="img/bg2.jpg" alt="bg">
-                </div>
-                <div class="fade_item">
-                    <img src="img/bg3.jpg" alt="bg">
-                </div>
-                <div class="fade_item">
-                    <img src="img/bg4.jpg" alt="bg">
-                </div>
-                <div class="fade_item">
-                    <img src="img/bg5.jpg" alt="bg">
-                </div>
-                <div class="fade_item">
-                    <img src="img/bg6.jpg" alt="bg">
-                </div>
-            </div>
-        </section>
-        <section class="page_section container">
-            <section class="page_section_items">
-                <h1 class="h1_title_dark">Բլոգ</h1>
+    </section>
+    <section class="page_section container">
+        <section class="page_section_items">
+            <h1 class="h1_title_dark">{{ header_item.title_4_hy }}</h1>
+            {% for foo in blog %}
                 <div class="project_section_item hover">
                     <div class="project_section_item_cover">
                         <a href="#">
-                            <img src="img/item_cover.jpg" alt="img">
+                            <img src="{{ foo.image.url }}" alt="img">
                         </a>
                         <h3 class="project_name">
-                            <a href="#">Ծրագրի անունը</a>
+                            <a href="#">{{ foo.program_name_hy }}</a>
                         </h3>
                     </div>
                     <div class="project_section_item_text">
                         <h4 class="item_title">
-                            <a href="#">Հեղինակ՝ Սամվել Հայրապետյան</a>
+                            <a href="#">{{ foo.author_hy }}</a>
                         </h4>
                     </div>
                 </div>
-                <div class="project_section_item hover">
-                    <div class="project_section_item_cover">
-                        <a href="#">
-                            <img src="img/item_cover.jpg" alt="img">
-                        </a>
-                        <h3 class="project_name">
-                            <a href="#">Ծրագրի անունը</a>
-                        </h3>
-                    </div>
-                    <div class="project_section_item_text">
-                        <h4 class="item_title">
-                            <a href="#">Հեղինակ՝ Սամվել Հայրապետյան</a>
-                        </h4>
-                    </div>
-                </div>
-                <div class="project_section_item hover">
-                    <div class="project_section_item_cover">
-                        <a href="#">
-                            <img src="img/item_cover.jpg" alt="img">
-                        </a>
-                        <h3 class="project_name">
-                            <a href="#">Ծրագրի անունը</a>
-                        </h3>
-                    </div>
-                    <div class="project_section_item_text">
-                        <h4 class="item_title">
-                            <a href="#">Հեղինակ՝ Սամվել Հայրապետյան</a>
-                        </h4>
-                    </div>
-                </div>
-                <div class="project_section_item hover">
-                    <div class="project_section_item_cover">
-                        <a href="#">
-                            <img src="img/item_cover.jpg" alt="img">
-                        </a>
-                        <h3 class="project_name">
-                            <a href="#">Ծրագրի անունը</a>
-                        </h3>
-                    </div>
-                    <div class="project_section_item_text">
-                        <h4 class="item_title">
-                            <a href="#">Հեղինակ՝ Սամվել Հայրապետյան</a>
-                        </h4>
-                    </div>
-                </div>
-                <div class="project_section_item hover">
-                    <div class="project_section_item_cover">
-                        <a href="#">
-                            <img src="img/item_cover.jpg" alt="img">
-                        </a>
-                        <h3 class="project_name">
-                            <a href="#">Ծրագրի անունը</a>
-                        </h3>
-                    </div>
-                    <div class="project_section_item_text">
-                        <h4 class="item_title">
-                            <a href="#">Հեղինակ՝ Սամվել Հայրապետյան</a>
-                        </h4>
-                    </div>
-                </div>
-                <div class="project_section_item hover">
-                    <div class="project_section_item_cover">
-                        <a href="#">
-                            <img src="img/item_cover.jpg" alt="img">
-                        </a>
-                        <h3 class="project_name">
-                            <a href="#">Ծրագրի անունը</a>
-                        </h3>
-                    </div>
-                    <div class="project_section_item_text">
-                        <h4 class="item_title">
-                            <a href="#">Հեղինակ՝ Սամվել Հայրապետյան</a>
-                        </h4>
-                    </div>
-                </div>
+            {% endfor %}
+
+
+
+            {% if is_paginated %}
                 <div class="pageing">
-                    <a href="#"><i class='fas fa-angle-double-left'></i></a>
-                    <a href="#" class="currentPageing">1</a>
-                    <a href="#">2</a>
-                    <a href="#">3</a>
-                    <a href="#">4</a>
-                    <a href="#">5</a>
-                    <a href="#"><i class='fas fa-angle-double-right'></i></a>
+                    <a {% if not next_url %} disabled {% endif %} href="{{ prev_url }}" tabindex="-1"><i
+                            class='fas fa-angle-double-left'></i></a>
+                    {% for n in page_object.paginator.page_range %}
+                        {% if page_object.number == n %}
+                            <a href="?page={{ n }}" class="currentPageing">{{ n }}</a>
+                        {% elif n > page_object.number|add:-3 and n < page_object.number|add:3 %}
+                            <a href="?page={{ n }}">{{ n }}</a>
+                        {% endif %}
+                    {% endfor %}
+                    {% if next_url %}
+                        <a href="{{ next_url }}" tabindex="-1"><i class='fas fa-angle-double-right'></i></a>
+                    {% elif not next_url %}
+                        <a href="?page=1"><i class='fas fa-angle-double-right'></i></a>
+                    {% endif %}
                 </div>
-            </section>
-            <section class="inside_aside">
-                <h1 class="h1_title_dark">Դիտեք նաև</h1>
-                <div class="inside_aside_scroll">
-                    <div class="inside_aside_item hover">
-                        <div class="inside_aside_item_cover">
-                            <a href="https://soundcloud.com/user-765957114" target="_blank">
-                                <img src="img/item_cover.jpg" alt="img">
-                            </a>
-                        </div>
-                        <div class="inside_aside_item_text">
-                            <h5 class="item_title">
-                                <a href="https://soundcloud.com/user-765957114" target="_blank">
-                                    Իրանի և ԵԱՏՄ-ի միջև ազատ առևտրի գոտու ստեղծումն ու Հայաստանի շահերը
-                                </a>
-                            </h5>
-                            <p class="item_text">Lorem Ipsum-ը տպագրության և տպագրական արդյունաբերության...</p>
-                        </div>
-                    </div>
-                    <div class="inside_aside_item hover">
-                        <div class="inside_aside_item_cover">
-                            <a href="https://soundcloud.com/user-765957114" target="_blank">
-                                <img src="img/item_cover.jpg" alt="img">
-                            </a>
-                        </div>
-                        <div class="inside_aside_item_text">
-                            <h5 class="item_title">
-                                <a href="https://soundcloud.com/user-765957114" target="_blank">
-                                    Իրանի և ԵԱՏՄ-ի միջև ազատ առևտրի գոտու ստեղծումն ու Հայաստանի շահերը
-                                </a>
-                            </h5>
-                            <p class="item_text">Lorem Ipsum-ը տպագրության և տպագրական արդյունաբերության...</p>
-                        </div>
-                    </div>
-                    <div class="inside_aside_item hover">
-                        <div class="inside_aside_item_cover">
-                            <a href="https://soundcloud.com/user-765957114" target="_blank">
-                                <img src="img/item_cover.jpg" alt="img">
-                            </a>
-                        </div>
-                        <div class="inside_aside_item_text">
-                            <h5 class="item_title">
-                                <a href="https://soundcloud.com/user-765957114" target="_blank">
-                                    Իրանի և ԵԱՏՄ-ի միջև ազատ առևտրի գոտու ստեղծումն ու Հայաստանի շահերը
-                                </a>
-                            </h5>
-                            <p class="item_text">Lorem Ipsum-ը տպագրության և տպագրական արդյունաբերության...</p>
-                        </div>
-                    </div>
-                    <div class="inside_aside_item hover">
-                        <div class="inside_aside_item_cover">
-                            <a href="https://soundcloud.com/user-765957114" target="_blank">
-                                <img src="img/item_cover.jpg" alt="img">
-                            </a>
-                        </div>
-                        <div class="inside_aside_item_text">
-                            <h5 class="item_title">
-                                <a href="https://soundcloud.com/user-765957114" target="_blank">
-                                    Իրանի և ԵԱՏՄ-ի միջև ազատ առևտրի գոտու ստեղծումն ու Հայաստանի շահերը
-                                </a>
-                            </h5>
-                            <p class="item_text">Lorem Ipsum-ը տպագրության և տպագրական արդյունաբերության...</p>
-                        </div>
-                    </div>
-                    <div class="inside_aside_item hover">
-                        <div class="inside_aside_item_cover">
-                            <a href="https://soundcloud.com/user-765957114" target="_blank">
-                                <img src="img/item_cover.jpg" alt="img">
-                            </a>
-                        </div>
-                        <div class="inside_aside_item_text">
-                            <h5 class="item_title">
-                                <a href="https://soundcloud.com/user-765957114" target="_blank">
-                                    Իրանի և ԵԱՏՄ-ի միջև ազատ առևտրի գոտու ստեղծումն ու Հայաստանի շահերը
-                                </a>
-                            </h5>
-                            <p class="item_text">Lorem Ipsum-ը տպագրության և տպագրական արդյունաբերության...</p>
-                        </div>
-                    </div>
-                    <div class="inside_aside_item hover">
-                        <div class="inside_aside_item_cover">
-                            <a href="https://soundcloud.com/user-765957114" target="_blank">
-                                <img src="img/item_cover.jpg" alt="img">
-                            </a>
-                        </div>
-                        <div class="inside_aside_item_text">
-                            <h5 class="item_title">
-                                <a href="https://soundcloud.com/user-765957114" target="_blank">
-                                    Իրանի և ԵԱՏՄ-ի միջև ազատ առևտրի գոտու ստեղծումն ու Հայաստանի շահերը
-                                </a>
-                            </h5>
-                            <p class="item_text">Lorem Ipsum-ը տպագրության և տպագրական արդյունաբերության...</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
+            {% endif %}
         </section>
-        <section class="download_section" style="background-color: #0071AE">
-            <section class="download_items container">
-                <div class="footer_logo">
-                    <a href="index.html">
-                        <img src="img/logo_png.png" alt="logo">
-                    </a>
-                </div>
-                <div class="download_social">
-                    <div class="download">
-                        <a href="#" title="Ներբեռնել հավելվածը App Store-ից">
-                            <img src="img/as.png" alt="apple">
-                        </a>
-                        <a href="#" title="Ներբեռնել հավելվածը Play Market-ից">
-                            <img src="img/gp.png" alt="google play">
-                        </a>
+        <section class="inside_aside">
+            <h1 class="h1_title_dark">Դիտեք նաև</h1>
+            <div class="inside_aside_scroll">
+                {% for foo in interviews_random %}
+                    <div class="inside_aside_item hover">
+                        <div class="inside_aside_item_cover">
+                            <a href="{{ foo.url }}" target="_blank">
+                                <img src="{{ foo.image.url }}" alt="img">
+                            </a>
+                        </div>
+                        <div class="inside_aside_item_text">
+                            <h5 class="item_title">
+                                <a href="{{ foo.url }}" target="_blank">{{ foo.title_hy }}</a>
+                            </h5>
+                            <p class="item_text">{{ foo.body_hy|safe }}</p>
+                        </div>
                     </div>
-                    <div class="footer_social">
-                        <a href="https://www.facebook.com/ArmnewsFM/" target="_blank">
-                            <img src="img/facebook.png" alt="social_icon">
-                        </a>
-                        <a href="https://www.youtube.com/channel/UC7af1d7soX2vpl4m2hG-S1Q" target="_blank">
-                            <img src="img/youtube.png" alt="social_icon">
-                        </a>
-                        <a href="https://soundcloud.com/user-765957114" target="_blank">
-                            <img src="img/soundcloud.png" alt="social_icon">
-                        </a>
-                    </div>
-                </div>
-            </section>
-        </section>
-    </main>
-    <footer style="background-color: #0071AE">
-        <section class="footer container">
-            <div class="footer_left">
-                &copy; <span class="web_year">2019</span> Բոլոր իրավունքները պաշտպանված են:
-                Կայքից ամբողջական կամ մասնակի մեջբերումներ կատարելիս ակտիվ հղումը  պարտադիր է:
-            </div>
-            <div class="footer_right">
-                <a href="https://www.hayrapetyanstyle.com/" target="_blank">HayrapetyanStyle</a>
+                {% endfor %}
             </div>
         </section>
-    </footer>
-    <script src="js/all.js"></script>
-</body>
-</html>
+    </section>
+{% endblock %}

@@ -175,13 +175,33 @@ class Programs(models.Model):
         ordering = ['-date_pub']
 
 
-class Broadcast(models.Model):
+class BroadcastDate(models.Model):
     week_dey_hy = models.CharField(max_length=150, db_index=True, verbose_name='Շաբաթվա օրը:')
     week_dey_ru = models.CharField(max_length=150, db_index=True, verbose_name='День недели:')
     week_dey_en = models.CharField(max_length=150, db_index=True, verbose_name='The day of the week:')
     date_hy = models.CharField(max_length=150, db_index=True, verbose_name='Ամսաթիվը:')
     date_ru = models.CharField(max_length=150, db_index=True, verbose_name='Дата:')
     date_en = models.CharField(max_length=150, db_index=True, verbose_name='Date:')
+    slug = AutoSlugField(populate_from='date_en', always_update=True, unique=True)
+    date_pub = models.DateTimeField(auto_now_add=True)
+
+
+
+    class Meta:
+        verbose_name = 'Ամիս֊ամսաթիվ'
+        verbose_name_plural = 'Ամիս֊ամսաթիվ'
+        ordering = ['date_pub']
+
+    def __str__(self):
+        return self.date_en
+
+    def get_absolute_url(self):
+        return reverse('mainapp:brod_url', args=[self.slug])
+
+
+
+class Broadcast(models.Model):
+    broadcastdate = models.ForeignKey(BroadcastDate, related_name='Հաղորդացանցեր', on_delete=models.CASCADE)
     title_hy = models.CharField(max_length=300, db_index=True, verbose_name='Վերնագիր:')
     title_ru = models.CharField(max_length=300, db_index=True, verbose_name='Заголовок:')
     title_en = models.CharField(max_length=300, db_index=True, verbose_name='Title:')
@@ -189,17 +209,18 @@ class Broadcast(models.Model):
     from_time = models.TimeField(auto_now_add=False, verbose_name='Սկիզբը:')
     to_time = models.TimeField(auto_now_add=False, verbose_name='Ավարտը:')
     image = models.ImageField(upload_to='broadcasts/%Y/%m/%d/', blank=True, verbose_name='Նկար:')
+    published = models.BooleanField(default=True, db_index=True)
     date_pub = models.DateTimeField(auto_now_add=True)
-
-    def get_absolute_url(self):
-        return reverse('post_detail_url', kwargs={'slug': self.slug})
-
-    def __str__(self):
-        return self.title
 
     class Meta:
         verbose_name_plural = 'Հաղորդացանցեր'
         ordering = ['date_pub']
+
+    def __str__(self):
+        return self.title_hy
+
+    def get_absolute_url(self):
+        return reverse('mainapp:brodcast_url', args=[self.id, self.slug])
 
 
 
@@ -226,10 +247,10 @@ class Blog(models.Model):
 
 
 
-class Ourme(models.Model):
-    title_hy = models.CharField(max_length=150, db_index=True, verbose_name='Վերնագիր:')
-    title_ru = models.CharField(max_length=150, db_index=True, verbose_name='Заголовок:')
-    title_en = models.CharField(max_length=150, db_index=True, verbose_name='Title:')
+class AboutUs(models.Model):
+    # title_hy = models.CharField(max_length=150, db_index=True, verbose_name='Վերնագիր:')
+    # title_ru = models.CharField(max_length=150, db_index=True, verbose_name='Заголовок:')
+    # title_en = models.CharField(max_length=150, db_index=True, verbose_name='Title:')
     body_hy = models.TextField(max_length=20000, db_index=True, verbose_name='Մարմին:')
     body_ru = models.TextField(max_length=20000, db_index=True, verbose_name='Тело:')
     body_en = models.TextField(max_length=20000, db_index=True, verbose_name='Body:')
@@ -249,6 +270,7 @@ class Footer(models.Model):
     facebook = models.CharField(max_length=500, db_index=True, verbose_name='Facebook:')
     yuotube = models.CharField(max_length=500, db_index=True, verbose_name='YouTube:')
     soundcloud = models.CharField(max_length=500, db_index=True, verbose_name='SoundCloud:')
+    mail = models.CharField(max_length=20, db_index=True, verbose_name='Էլեկտրոնային հասցե։')
     text_hy = models.TextField(max_length=530, db_index=True, verbose_name='© Տեքստ:')
     text_ru = models.TextField(max_length=530, db_index=True, verbose_name='© Текст:')
     text_en = models.TextField(max_length=530, db_index=True, verbose_name='© Text:')

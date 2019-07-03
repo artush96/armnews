@@ -43,8 +43,11 @@
                             <a href="?page={{ n }}">{{ n }}</a>
                         {% endif %}
                     {% endfor %}
-                    <a {% if not next_url %} disabled {% endif %} href="{{ next_url }}" tabindex="-1"><i
-                            class='fas fa-angle-double-right'></i></a>
+                    {% if next_url %}
+                        <a href="{{ next_url }}" tabindex="-1"><i class='fas fa-angle-double-right'></i></a>
+                    {% elif not next_url %}
+                        <a href="?page=1"><i class='fas fa-angle-double-right'></i></a>
+                    {% endif %}
                 </div>
             {% endif %}
         </section>

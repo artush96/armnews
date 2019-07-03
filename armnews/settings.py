@@ -75,6 +75,10 @@ ADMIN_REORDER = (
      'models': ('mainapp.Programs',)
      },
 
+    # {'app': 'mainapp', 'label': 'Ամիս֊Ամսաթիվ(Հաղորդացանց)',
+    #  'models': ('mainapp.BroadcastDate',)
+    #  },
+
     {'app': 'mainapp', 'label': 'Հաղորդացանց',
      'models': ('mainapp.Broadcast',)
      },
@@ -100,7 +104,7 @@ ADMIN_REORDER = (
      },
 
     {'app': 'mainapp', 'label': 'Մեր մասին',
-     'models': ('mainapp.Ourme',)
+     'models': ('mainapp.AboutUs',)
      },
 
     {'app': 'mainapp', 'label': 'Վերջաբան',
@@ -182,7 +186,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-SESSION_COOKIE_DOMAIN = '.127.0.0.1:8000'
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
@@ -202,7 +206,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = 'assets'
+# STATIC_ROOT = os.path.join(BASE_DIR, 'assets')
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
 ]

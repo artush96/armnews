@@ -1,347 +1,51 @@
-<!DOCTYPE html>
-<html lang="hy">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="robots" content="index">
-    <meta name="robots" content="follow">
-    <meta name="description" content="">
-    <meta name="keywords" content="">
-    <title>ArmNews Հաղորդացանց</title>
-    <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
-    <link rel="shortcut icon" href="img/favicon.ico">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/slick-theme.css">
-    <link rel="stylesheet" href="css/slick.css">
-    <link rel="stylesheet" href="css/styles.css">
-</head>
-<body>
-    <header style="background-color: #0071AE">
-        <section class="header container">
-            <div class="header_left">
-                <div class="header_logo" title="Գլխավոր">
-                    <a href="index.html">
-                        <img src="img/logo_png.png" alt="logo">
-                    </a>
+{% extends 'base.html' %}
+
+{% block content %}
+    <section class="main_top_slider">
+        <div class="fade">
+            {% for foo in slider %}
+                <div class="fade_item">
+                    <img src="{{ foo.image.url }}" alt="bg">
                 </div>
-            </div>
-            <div class="header_center">
-                <p>ArmnNews 106.9 ուղիղ եթեր</p>
-                <script type="text/javascript" src="https://hosted.muses.org/mrp.js"></script>
-                <script type="text/javascript">
-                    MRP.insert({
-                    'url':'http://s7.voscast.com:10196/armnews',
-                    'lang':'hy',
-                    'codec':'mp3',
-                    'volume':65,
-                    'autoplay': true,
-                    'forceHTML5':true,
-                    'jsevents':true,
-                    'buffering':0,
-                    'title':'ArmNews 106.9',
-                    'welcome':'Բարլուս ազիզ',
-                    'wmode':'transparent',
-                    'skin':'faredirfare',
-                    'width':270,
-                    'height':52
-                    });
-                </script>
-            </div>
-            <div class="header_right">
-                <a href="#" title="Հայերեն">
-                    <div class="language_flag">
-                        <img src="img/ARM.png" alt="arm">
-                    </div>
-                    <div class="language_name">
-                        ՀԱՅ
-                    </div>
-                </a>
-                <a href="#" title="Русский">
-                    <div class="language_flag">
-                        <img src="img/RUS.png" alt="rus">
-                    </div>
-                    <div class="language_name">
-                        РУС
-                    </div>
-                </a>
-                <a href="#" title="English">
-                    <div class="language_flag">
-                        <img src="img/ENG.png" alt="eng">
-                    </div>
-                    <div class="language_name">
-                        ENG
-                    </div>
-                </a>
-            </div>
-        </section>
-    </header>
-    <nav style="background-color: #0071AE">
-        <section class="nav container">
-            <div class="menuBtn">
-                <img src="img/menu.png" alt="menu">
-            </div>
-            <ul class="nav_menu">
-                <div class="close_menu">
-                    <img src="img/cancel.png" alt="close">
-                </div>
-                <li><a href="interviews.html">Հարցազրույցներ</a></li>
-                <li><a href="projects.html">Ծրագրեր</a></li>
-                <li><a href="broadcast.html">Հաղորդացանց</a></li>
-                <li><a href="blog.html">Բլոգ</a></li>
-                <li><a href="aboutus.html">Մեր մասին</a></li>
-                <div class="search_area">
-                    <input type="search" placeholder="Որոնում...">
-                    <img src="img/srch.png" alt="search" class="searchBtn">
-                </div>
-            </ul>
-            <div class="video_audio">
-                <a href="#">
-                    <img src="img/listen.png" alt="listen" class="eye">
-                    ԼՍԵԼ
-                </a>
-                <a href="#">
-                    <img src="img/watch.png" alt="watch" class="mic">
-                    ԴԻՏԵԼ
-                </a>
-            </div>
-        </section>
-    </nav>
-    <main>
-        <div class="btn-up">
-            <img src="img/upBtn.png" alt="up">
+            {% endfor %}
         </div>
-        <div class="fixed_social">
-            <a href="https://www.facebook.com/ArmnewsFM/" target="_blank">
-                <img src="img/fb.png" alt="social_icon">
-            </a>
-            <a href="https://www.youtube.com/channel/UC7af1d7soX2vpl4m2hG-S1Q" target="_blank">
-                <img src="img/yt.png" alt="social_icon">
-            </a>
-            <a href="https://soundcloud.com/user-765957114" target="_blank">
-                <img src="img/sc.png" alt="social_icon">
-            </a>
+    </section>
+    <section class="broadcast_page container">
+        <h1 class="h1_title_dark">{{ header_items.titl_3_hy }}</h1>
+        <div class="multiple-items">
+            {% for foo in broadcastsdates %}
+                <div class="broadcast_slider_item {% if brodcastdate.slug == foo.slug %}activeTab{% endif %}">
+                    <p><a style="text-decoration: none;" href="{{ foo.get_absolute_url }}">{{ foo.week_dey_hy }}</a></p>
+                    <p><a style="text-decoration: none;" href="{{ foo.get_absolute_url }}">{{ foo.date_hy }}</a></p>
+{#                    <p>{{ foo.week_dey_hy }}</p>#}
+{#                    <p>{{ foo.date_hy }}</p>#}
+                </div>
+            {% endfor %}
+
+{#            <div class="broadcast_slider_item activeTab">#}
+{#                    <p><a href="{{ foo.get_absolute_url }}">{{ foo.week_dey_hy }}</a></p>#}
+{#                    <p><a href="{{ foo.get_absolute_url }}">{{ foo.date_hy }}</a></p>#}
+{#                    <p>{{ broadcastsdates.week_dey_hy }}</p>#}
+{#                    <p>{{ broadcastsdates.date_hy }}</p>#}
+{#                </div>#}
         </div>
-        <section class="main_top_slider">
-            <div class="fade">
-                <div class="fade_item">
-                    <img src="img/bg1.jpg" alt="bg">
-                </div>
-                <div class="fade_item">
-                    <img src="img/bg2.jpg" alt="bg">
-                </div>
-                <div class="fade_item">
-                    <img src="img/bg3.jpg" alt="bg">
-                </div>
-                <div class="fade_item">
-                    <img src="img/bg4.jpg" alt="bg">
-                </div>
-                <div class="fade_item">
-                    <img src="img/bg5.jpg" alt="bg">
-                </div>
-                <div class="fade_item">
-                    <img src="img/bg6.jpg" alt="bg">
-                </div>
-            </div>
-        </section>
-        <section class="broadcast_page container">
-            <h1 class="h1_title_dark">Հաղորդացանց</h1>
-            <div class="multiple-items">
-                <div class="broadcast_slider_item">
-                    <p>Երկուշաբթի</p>
-                    <p>17 Հունիս 2019</p>
-                </div>
-                <div class="broadcast_slider_item">
-                    <p>Երեքշաբթի</p>
-                    <p>18 Հունիս 2019</p>
-                </div>
-                <div class="broadcast_slider_item">
-                    <p>Չորեքշաբթի</p>
-                    <p>19 Հունիս 2019</p>
-                </div>
-                <div class="broadcast_slider_item">
-                    <p>Հինգշաբթի</p>
-                    <p>20 Հունիս 2019</p>
-                </div>
-                <div class="broadcast_slider_item activeTab">
-                    <p>Ուրբաթ</p>
-                    <p>21 Հունիս 2019</p>
-                </div>
-                <div class="broadcast_slider_item">
-                    <p>Շաբաթ</p>
-                    <p>22 Հունիս 2019</p>
-                </div>
-                <div class="broadcast_slider_item">
-                    <p>Կիրակի</p>
-                    <p>23 Հունիս 2019</p>
-                </div>
-                <div class="broadcast_slider_item">
-                    <p>Երկուշաբթի</p>
-                    <p>24 Հունիս 2019</p>
-                </div>
-                <div class="broadcast_slider_item">
-                    <p>Երեքշաբթի</p>
-                    <p>25 Հունիս 2019</p>
-                </div>
-                <div class="broadcast_slider_item">
-                    <p>Չորեքշաբթի</p>
-                    <p>26 Հունիս 2019</p>
-                </div>
-                <div class="broadcast_slider_item">
-                    <p>Հինգշաբթի</p>
-                    <p>27 Հունիս 2019</p>
-                </div>
-                <div class="broadcast_slider_item">
-                    <p>Ուրբաթ</p>
-                    <p>28 Հունիս 2019</p>
-                </div>
-                <div class="broadcast_slider_item">
-                    <p>Շաբաթ</p>
-                    <p>29 Հունիս 2019</p>
-                </div>
-                <div class="broadcast_slider_item">
-                    <p>Կիրակի</p>
-                    <p>30 Հունիս 2019</p>
-                </div>
-            </div>
-            <div class="broadcast_content">
-                <h3>21 Հունիս 2019 Ուրբաթ</h3>
+        <div class="broadcast_content">
+        {% if brodcastdate.slug %}
+            <h3>{{ brodcastdate.date_hy }} {{ brodcastdate.week_dey_hy }}</h3>
+        {% endif %}
+            {% for broadcast in broadcasts %}
                 <div class="broadcast_content_item">
                     <div class="broadcast_content_item_cover">
-                        <img src="img/logo_png.png" alt="logo">
+                        <img src="{{ broadcast.image.url }}" alt="logo">
                     </div>
-                    <div class="broadcast_content_item_watch">06:00 - 06:45</div>
+                    <div class="broadcast_content_item_watch">{{ broadcast.from_time|time:'f : i' }}
+                        - {{ broadcast.to_time|time:'f : i' }}</div>
                     <div class="broadcast_content_item_name">
-                        <a href="#">Նյութի վերնագիր</a>
+                        <a href="#">{{ broadcast.title_hy }}</a>
                     </div>
                 </div>
-                <div class="broadcast_content_item">
-                    <div class="broadcast_content_item_cover">
-                        <img src="img/logo_png.png" alt="logo">
-                    </div>
-                    <div class="broadcast_content_item_watch">06:00 - 06:45</div>
-                    <div class="broadcast_content_item_name">
-                        <a href="#">Նյութի վերնագիր</a>
-                    </div>
-                </div>
-                <div class="broadcast_content_item">
-                    <div class="broadcast_content_item_cover">
-                        <img src="img/logo_png.png" alt="logo">
-                    </div>
-                    <div class="broadcast_content_item_watch">06:00 - 06:45</div>
-                    <div class="broadcast_content_item_name">
-                        <a href="#">Նյութի վերնագիր</a>
-                    </div>
-                </div>
-                <div class="broadcast_content_item">
-                    <div class="broadcast_content_item_cover">
-                        <img src="img/logo_png.png" alt="logo">
-                    </div>
-                    <div class="broadcast_content_item_watch">06:00 - 06:45</div>
-                    <div class="broadcast_content_item_name">
-                        <a href="#">Նյութի վերնագիր</a>
-                    </div>
-                </div>
-                <div class="broadcast_content_item">
-                    <div class="broadcast_content_item_cover">
-                        <img src="img/logo_png.png" alt="logo">
-                    </div>
-                    <div class="broadcast_content_item_watch">06:00 - 06:45</div>
-                    <div class="broadcast_content_item_name">
-                        <a href="#">Նյութի վերնագիր</a>
-                    </div>
-                </div>
-                <div class="broadcast_content_item">
-                    <div class="broadcast_content_item_cover">
-                        <img src="img/logo_png.png" alt="logo">
-                    </div>
-                    <div class="broadcast_content_item_watch">06:00 - 06:45</div>
-                    <div class="broadcast_content_item_name">
-                        <a href="#">Նյութի վերնագիր</a>
-                    </div>
-                </div>
-                <div class="broadcast_content_item">
-                    <div class="broadcast_content_item_cover">
-                        <img src="img/logo_png.png" alt="logo">
-                    </div>
-                    <div class="broadcast_content_item_watch">06:00 - 06:45</div>
-                    <div class="broadcast_content_item_name">
-                        <a href="#">Նյութի վերնագիր</a>
-                    </div>
-                </div>
-                <div class="broadcast_content_item">
-                    <div class="broadcast_content_item_cover">
-                        <img src="img/logo_png.png" alt="logo">
-                    </div>
-                    <div class="broadcast_content_item_watch">06:00 - 06:45</div>
-                    <div class="broadcast_content_item_name">
-                        <a href="#">Նյութի վերնագիր</a>
-                    </div>
-                </div>
-                <div class="broadcast_content_item">
-                    <div class="broadcast_content_item_cover">
-                        <img src="img/logo_png.png" alt="logo">
-                    </div>
-                    <div class="broadcast_content_item_watch">06:00 - 06:45</div>
-                    <div class="broadcast_content_item_name">
-                        <a href="#">Նյութի վերնագիր</a>
-                    </div>
-                </div>
-                <div class="broadcast_content_item">
-                    <div class="broadcast_content_item_cover">
-                        <img src="img/logo_png.png" alt="logo">
-                    </div>
-                    <div class="broadcast_content_item_watch">06:00 - 06:45</div>
-                    <div class="broadcast_content_item_name">
-                        <a href="#">Նյութի վերնագիր</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section class="download_section" style="background-color: #0071AE">
-            <section class="download_items container">
-                <div class="footer_logo">
-                    <a href="index.html">
-                        <img src="img/logo_png.png" alt="logo">
-                    </a>
-                </div>
-                <div class="download_social">
-                    <div class="download">
-                        <a href="#" title="Ներբեռնել հավելվածը App Store-ից">
-                            <img src="img/as.png" alt="apple">
-                        </a>
-                        <a href="#" title="Ներբեռնել հավելվածը Play Market-ից">
-                            <img src="img/gp.png" alt="google play">
-                        </a>
-                    </div>
-                    <div class="footer_social">
-                        <a href="https://www.facebook.com/ArmnewsFM/" target="_blank">
-                            <img src="img/facebook.png" alt="social_icon">
-                        </a>
-                        <a href="https://www.youtube.com/channel/UC7af1d7soX2vpl4m2hG-S1Q" target="_blank">
-                            <img src="img/youtube.png" alt="social_icon">
-                        </a>
-                        <a href="https://soundcloud.com/user-765957114" target="_blank">
-                            <img src="img/soundcloud.png" alt="social_icon">
-                        </a>
-                    </div>
-                </div>
-            </section>
-        </section>
-    </main>
-    <footer style="background-color: #0071AE">
-        <section class="footer container">
-            <div class="footer_left">
-                &copy; <span class="web_year">2019</span> Բոլոր իրավունքները պաշտպանված են:
-                Կայքից ամբողջական կամ մասնակի մեջբերումներ կատարելիս ակտիվ հղումը  պարտադիր է:
-            </div>
-            <div class="footer_right">
-                <a href="https://www.hayrapetyanstyle.com/" target="_blank">HayrapetyanStyle</a>
-            </div>
-        </section>
-    </footer>
-    <script src="js/all.js"></script>
-</body>
-</html>
+            {% endfor %}
+        </div>
+
+    </section>
+{% endblock %}

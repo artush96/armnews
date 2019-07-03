@@ -53,6 +53,11 @@ class InterviewAdmin(SummernoteModelAdmin):
                     'url']
     summernote_fields = '__all__'
 
+class BroadcastDateAdmin(SummernoteModelAdmin):
+    list_display = ['week_dey_hy', 'week_dey_ru', 'week_dey_en',
+                    'date_hy', 'date_ru',  'date_en']
+    summernote_fields = '__all__'
+
 class ProgramsAdmin(SummernoteModelAdmin):
     list_display = ['title_hy', 'title_ru', 'title_en',
                     'author_hy', 'author_ru', 'author_en',
@@ -60,9 +65,7 @@ class ProgramsAdmin(SummernoteModelAdmin):
     summernote_fields = '__all__'
 
 class BroadcastAdmin(SummernoteModelAdmin):
-    list_display = ['week_dey_hy', 'week_dey_ru', 'week_dey_en',
-                    'date_hy', 'date_ru',  'date_en',
-                    'title_hy', 'title_ru', 'title_en',
+    list_display = ['title_hy', 'title_ru', 'title_en',
                     'slug', 'from_time', 'to_time']
     summernote_fields = '__all__'
 
@@ -74,9 +77,8 @@ class BlogAdmin(SummernoteModelAdmin):
     summernote_fields = '__all__'
 
 
-class OurmeAdmin(SummernoteModelAdmin):
-    list_display = ['title_hy', 'title_ru', 'title_en',
-                    'body_hy', 'body_ru', 'body_en']
+class AboutUsAdmin(SummernoteModelAdmin):
+    list_display = ['body_hy', 'body_ru', 'body_en']
     summernote_fields = '__all__'
 
 
@@ -94,9 +96,10 @@ admin.site.register(TopNews, TopNewsAdmin)
 admin.site.register(Partners, PartnersAdmin)
 admin.site.register(Interview, InterviewAdmin)
 admin.site.register(Programs, ProgramsAdmin)
+admin.site.register(BroadcastDate, BroadcastDateAdmin)
 admin.site.register(Broadcast, BroadcastAdmin)
 admin.site.register(Blog, BlogAdmin)
-admin.site.register(Ourme, OurmeAdmin)
+admin.site.register(AboutUs, AboutUsAdmin)
 admin.site.register(Footer, FooterAdmin)
 
 

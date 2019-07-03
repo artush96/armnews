@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.core.paginator import Paginator
 from .models import *
 
@@ -94,7 +94,7 @@ def programs(request):
     interviews_random = Interview.objects.order_by("?")[:10]
     footer = Footer.objects.all().first()
 
-    paginator = Paginator(programs, 4)
+    paginator = Paginator(programs, 3)
 
     page_number = request.GET.get('page', 1)
     page = paginator.get_page(page_number)
@@ -125,6 +125,100 @@ def programs(request):
     }
 
     return render(request, 'mainapp/projects.html', context=context)
+
+
+
+def broadcasts(request, brod_slug=None):
+    brodcastdate = None
+    slider = Slider.objects.all()
+    header_items = Header.objects.all().first()
+    footer = Footer.objects.all().first()
+    broadcastsdat = BroadcastDate.objects.all().first()
+    broadcastsdates = BroadcastDate.objects.all()
+    broadcasts = Broadcast.objects.filter(published=True)
+
+    if brod_slug:
+        brodcastdate = get_object_or_404(BroadcastDate, slug=brod_slug)
+        broadcasts = Broadcast.objects.filter(broadcastdate=brodcastdate)
+
+
+
+
+
+    context = {
+        'header_items': header_items,
+        'brodcastdate': brodcastdate,
+        'broadcastsdates': broadcastsdates,
+        'broadcasts': broadcasts,
+        'broadcastsdat': broadcastsdat,
+        'slider': slider,
+        'footer': footer,
+    }
+
+    return render(request, 'mainapp/broadcast.html', context=context)
+
+
+
+
+
+def blog(request):
+    header_items = Header.objects.all().first()
+    blog = Blog.objects.all()
+    slider = Slider.objects.all()
+    interviews_random = Interview.objects.order_by("?")[:10]
+    footer = Footer.objects.all().first()
+
+    paginator = Paginator(blog, 3)
+
+    page_number = request.GET.get('page', 1)
+    page = paginator.get_page(page_number)
+
+    is_paginated = page.has_other_pages()
+
+    if page.has_previous():
+        prev_url = '?page={}'.format(page.previous_page_number())
+    else:
+        prev_url = ''
+
+    if page.has_next():
+        next_url = '?page={}'.format(page.next_page_number())
+    else:
+        next_url = ''
+
+
+    context = {
+        'header_items': header_items,
+        'blog': blog,
+        'slider': slider,
+        'interviews_random': interviews_random,
+        'page_object': page,
+        'is_paginated': is_paginated,
+        'prev_url': prev_url,
+        'next_url': next_url,
+        'footer': footer,
+    }
+
+    return render(request, 'mainapp/blog.html', context=context)
+
+
+
+def aboutus(request):
+    header_items = Header.objects.all().first()
+    slider = Slider.objects.all()
+    aboutus = AboutUs.objects.all().first()
+    footer = Footer.objects.all().first()
+
+
+
+    context = {
+        'header_items': header_items,
+        'slider': slider,
+        'aboutus': aboutus,
+        'footer': footer,
+    }
+
+    return render(request, 'mainapp/aboutus.html', context=context)
+
 
 
 
