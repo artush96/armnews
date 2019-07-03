@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, get_object_or_404
 from django.core.paginator import Paginator
 from .models import *
 
@@ -51,7 +51,7 @@ def interviews(request):
     header_items = Header.objects.all().first()
     interviews = Interview.objects.all()
     slider = Slider.objects.all()
-    interviews_random = Interview.objects.order_by("?")[:10]
+    interviews_random = Interview.objects.order_by("?")[:15]
     footer = Footer.objects.all().first()
 
     paginator = Paginator(interviews, 4)
@@ -91,7 +91,7 @@ def programs(request):
     header_items = Header.objects.all().first()
     programs = Programs.objects.all()
     slider = Slider.objects.all()
-    interviews_random = Interview.objects.order_by("?")[:10]
+    interviews_random = Interview.objects.order_by("?")[:15]
     footer = Footer.objects.all().first()
 
     paginator = Paginator(programs, 3)
@@ -163,12 +163,12 @@ def broadcasts(request, brod_slug=None):
 
 def blog(request):
     header_items = Header.objects.all().first()
-    blog = Blog.objects.all()
+    bloging = Blog.objects.all()
     slider = Slider.objects.all()
-    interviews_random = Interview.objects.order_by("?")[:10]
+    interviews_random = Interview.objects.order_by("?")[:15]
     footer = Footer.objects.all().first()
 
-    paginator = Paginator(blog, 3)
+    paginator = Paginator(bloging, 3)
 
     page_number = request.GET.get('page', 1)
     page = paginator.get_page(page_number)
@@ -188,7 +188,7 @@ def blog(request):
 
     context = {
         'header_items': header_items,
-        'blog': blog,
+        'bloging': bloging,
         'slider': slider,
         'interviews_random': interviews_random,
         'page_object': page,

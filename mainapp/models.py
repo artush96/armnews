@@ -244,6 +244,10 @@ class Blog(models.Model):
 
     class Meta:
         verbose_name_plural = 'Բլոգ'
+        ordering = ['-date_pub']
+
+    def __str__(self):
+        return self.title_hy
 
 
 
