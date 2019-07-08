@@ -16,16 +16,16 @@
             {% for program in page_object.object_list %}
             <div class="project_section_item hover">
                 <div class="project_section_item_cover">
-                    <a href="{{ program.url }}">
+                    <a href="{{ program.get_absolute_url }}">
                         <img src="{{ program.image.url }}" alt="img">
                     </a>
                     <h3 class="project_name">
-                        <a href="{{ program.url }}">{{ program.title_hy }}</a>
+                        <a href="{{ program.get_absolute_url }}">{{ program.title_hy }}</a>
                     </h3>
                 </div>
                 <div class="project_section_item_text">
                     <h4 class="item_title">
-                        <a href="{{ program.url }}">{{ program.author_hy }}</a>
+                        <a href="{{ program.get_absolute_url }}">{{ program.author_hy }}</a>
                     </h4>
                 </div>
             </div>

@@ -1,5 +1,8 @@
 from django.shortcuts import render, get_object_or_404
 from django.core.paginator import Paginator
+from django.db.models import Q
+from itertools import chain
+
 from .models import *
 
 from django.http import HttpResponse, HttpResponseRedirect
@@ -17,6 +20,56 @@ def test_cookie(request):
         return HttpResponse("Your favorite color is {0}".format(request.COOKIES['radio']))
 
 
+def search_results(request):
+    header_items = Header.objects.all().first()
+    footer = Footer.objects.all().first()
+    slider = Slider.objects.all()
+    search_query = request.GET.get('search', '')
+
+    if search_query:
+        interviews = Interview.objects.filter(Q(title_hy__icontains=search_query) |
+                                              Q(title_ru__icontains=search_query) |
+                                              Q(title_en__icontains=search_query) |
+                                              Q(body_hy__icontains=search_query) |
+                                              Q(body_ru__icontains=search_query) |
+                                              Q(body_en__icontains=search_query))
+        programs = Programs.objects.filter(Q(title_hy__icontains=search_query) |
+                                           Q(title_ru__icontains=search_query) |
+                                           Q(title_en__icontains=search_query) |
+                                           Q(body_hy__icontains=search_query) |
+                                           Q(body_ru__icontains=search_query) |
+                                           Q(body_en__icontains=search_query) |
+                                           Q(program_name_hy__icontains=search_query) |
+                                           Q(program_name_ru__icontains=search_query) |
+                                           Q(program_name_en__icontains=search_query) |
+                                           Q(author_hy__icontains=search_query))
+        broadcast = Broadcast.objects.filter(Q(title_hy__icontains=search_query) |
+                                             Q(title_hy__icontains=search_query) |
+                                             Q(title_hy__icontains=search_query))
+        blog = Blog.objects.filter(Q(title_hy__icontains=search_query) |
+                                           Q(title_ru__icontains=search_query) |
+                                           Q(title_en__icontains=search_query) |
+                                           Q(body_hy__icontains=search_query) |
+                                           Q(body_ru__icontains=search_query) |
+                                           Q(body_en__icontains=search_query) |
+                                           Q(program_name_hy__icontains=search_query) |
+                                           Q(program_name_ru__icontains=search_query) |
+                                           Q(program_name_en__icontains=search_query) |
+                                           Q(author_hy__icontains=search_query))
+
+        results = chain(interviews, programs, broadcast, blog)
+
+    context = {
+        'header_items': header_items,
+        'slider': slider,
+        'results': results,
+        'footer': footer,
+    }
+
+    return render(request, 'mainapp/search.html', context=context)
+
+
+
 
 def header(request):
     header_items = Header.objects.all().first()
@@ -29,6 +82,7 @@ def header(request):
     blog = Blog.objects.all()[:4]
     partners = Partners.objects.all().first()
     footer = Footer.objects.all().first()
+
 
 
 
@@ -221,6 +275,48 @@ def aboutus(request):
 
 
 
+
+def programsDetail(request, slug):
+    header_items = Header.objects.all().first()
+    slider = Slider.objects.all()
+    footer = Footer.objects.all().first()
+    program_detail = get_object_or_404(Programs, slug=slug)
+    template = 'mainapp/morepage.html'
+    context = {
+        'program_detail': program_detail,
+        'slider': slider,
+        'header_items': header_items,
+        'footer': footer,
+    }
+    return render(request, template, context)
+
+def blogDetail(request, slug):
+    header_items = Header.objects.all().first()
+    slider = Slider.objects.all()
+    footer = Footer.objects.all().first()
+    program_detail = get_object_or_404(Programs, slug=slug)
+    template = 'mainapp/morepage.html'
+    context = {
+        'program_detail': program_detail,
+        'slider': slider,
+        'header_items': header_items,
+        'footer': footer,
+    }
+    return render(request, template, context)
+
+
+
+def error_404(request, exception):
+    header_items = Header.objects.all().first()
+    slider = Slider.objects.all()
+    footer = Footer.objects.all().first()
+
+    context = {
+        'slider': slider,
+        'header_items': header_items,
+        'footer': footer,
+    }
+    return render(request, 'mainapp/error404.html', context)
 
 
 

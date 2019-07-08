@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'mainapp/base_mainapp.html' %}
 {% load static %}
 {% block content %}
     <section class="staff_bg">
@@ -10,22 +10,44 @@
                 {{ yt_url.yt_url|safe }}
             </div>
         </div>
-        <div class="top_content">
-            <h2>Թոփ նորություններ</h2>
-            <div class="top_items">
-                {% for top_new in top_news %}
-                    <a href="{{ top_new.url }}" class="top_item hover">
-                        <div class="top_item_cover">
-                            <img src="{{ top_new.image.url }}" alt="item">
+{#        <div class="top_content">#}
+{#            <h2>Թոփ Նորություններ</h2>#}
+{#            <div class="top_items">#}
+{#                {% for top_new in top_news %}#}
+{#                    <a href="{{ top_new.url }}" class="top_item hover">#}
+{#                        <div class="top_item_cover">#}
+{#                            <img src="{{ top_new.image.url }}" alt="item">#}
+{#                        </div>#}
+{#                        <div class="top_item_text">#}
+{#                            <h3>{{ top_new.title_hy }}</h3>#}
+{#                            <p>{{ top_new.body_hy|safe }}</p>#}
+{#                        </div>#}
+{#                    </a>#}
+{#                {% endfor %}#}
+{#            </div>#}
+{#        </div>#}
+        <section class="inside_aside">
+                <h3>Թոփ Նորություններ</h3>
+            {% for top_new in top_news %}
+                <div class="inside_aside_scroll">
+                    <div class="inside_aside_item hover">
+                        <div class="inside_aside_item_cover">
+                            <a href="{{ top_new.url }}" target="_blank">
+                                <img src="{{ top_new.image.url }}" alt="img">
+                            </a>
                         </div>
-                        <div class="top_item_text">
-                            <h3>{{ top_new.title_hy }}</h3>
-                            <p>{{ top_new.body_hy|safe }}</p>
+                        <div class="inside_aside_item_text">
+                            <h5 class="item_title">
+                                <a href="{{ top_new.url }}" target="_blank">
+                                    {{ top_new.title_hy }}
+                                </a>
+                            </h5>
+                            <p class="item_text">{{ top_new.body_hy|safe }}</p>
                         </div>
-                    </a>
-                {% endfor %}
-            </div>
-        </div>
+                    </div>
+                </div>
+            {% endfor %}
+            </section>
     </section>
     <section class="main_parralax" style="background-color: #0071AE">
         <section class="main_items container">

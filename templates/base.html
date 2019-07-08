@@ -33,27 +33,27 @@
             </div>
             <div class="header_center">
                 <p>ArmnNews 106.9 ուղիղ եթեր</p>
-{#                <script type="text/javascript" src="https://hosted.muses.org/mrp.js"></script>#}
-{#                <script type="text/javascript">#}
-{##}
-{#                    MRP.insert({#}
-{#                        'url': 'http://s7.voscast.com:10196/armnews',#}
-{#                        'lang': 'hy',#}
-{#                        'codec': 'mp3',#}
-{#                        'volume': 65,#}
-{#                        'autoplay': true,#}
-{#                        'forceHTML5': true,#}
-{#                        'jsevents': true,#}
-{#                        'buffering': 0,#}
-{#                        'title': 'ArmNews 106.9',#}
-{#                        'welcome': 'Բարլուս ազիզ',#}
-{#                        'wmode': 'transparent',#}
-{#                        'skin': 'faredirfare',#}
-{#                        'width': 270,#}
-{#                        'height': 52#}
-{#                    });#}
-{#                    myStorage = window.localStorage;#}
-{#                </script>#}
+                <script type="text/javascript" src="https://hosted.muses.org/mrp.js"></script>
+                <script type="text/javascript">
+
+                    MRP.insert({
+                        'url': 'http://s7.voscast.com:10196/armnews',
+                        'lang': 'hy',
+                        'codec': 'mp3',
+                        'volume': 65,
+                        'autoplay': true,
+                        'forceHTML5': true,
+                        'jsevents': true,
+                        'buffering': 0,
+                        'title': 'ArmNews 106.9',
+                        'welcome': 'Բարլուս ազիզ',
+                        'wmode': 'transparent',
+                        'skin': 'faredirfare',
+                        'width': 270,
+                        'height': 52
+                    });
+                    myStorage = window.localStorage;
+                </script>
             </div>
             <div class="header_right">
                 <a href="#" title="Հայերեն">
@@ -98,8 +98,11 @@
                 <li><a href="/blog">{{ header_items.title_4_hy }}</a></li>
                 <li><a href="/aboutus">{{ header_items.title_5_hy }}</a></li>
                 <div class="search_area">
-                    <input type="search" placeholder="Որոնում...">
-                    <img src="{% static 'img/srch.png' %}" alt="search" class="searchBtn">
+                    <form action="{% url 'mainapp:search' %}">
+                        <input type="search" placeholder="Որոնում..." name="search">
+                        <img type="submit" src="{% static 'img/srch.png' %}" alt="search" class="searchBtn">
+                        <button type="submit" class="but"><i class="fa fa-search ico"></i></button>
+                    </form>
                 </div>
             </ul>
             <div class="video_audio">
@@ -179,5 +182,9 @@
     </footer>
 
     <script src="{% static 'js/all.js' %}"></script>
+    <script src="{% static 'js/jquery-3.2.0.min.js' %}"></script>
+    <script src="{% static 'js/script.js' %}"></script>
+    <script src="{% static 'js/slick.min.js' %}"></script>
+    <script src="{% static 'js/wow.min.js' %}"></script>
 </body>
 </html>

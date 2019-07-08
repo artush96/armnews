@@ -165,7 +165,7 @@ class Programs(models.Model):
     date_pub = models.DateTimeField(auto_now_add=True)
 
     def get_absolute_url(self):
-        return reverse('post_detail_url', kwargs={'slug': self.slug})
+        return reverse('mainapp:programs_detail', kwargs={'slug': self.slug})
 
     def __str__(self):
         return self.title_hy
@@ -248,6 +248,9 @@ class Blog(models.Model):
 
     def __str__(self):
         return self.title_hy
+
+    def get_absolute_url(self):
+        return reverse('mainapp:blog_detail', kwargs={'slug': self.slug})
 
 
 

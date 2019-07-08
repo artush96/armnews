@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <section class="main_top_slider">
+        <div class="fade">
+            {% for foo in slider %}
+                <div class="fade_item">
+                    <img src="{{ foo.image.url }}" alt="bg">
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+    <section class="error404 container">
+        <h1 class="error404_title">Ձեր փնտրած էջը չի գտնվել</h1>
+        <div class="errorimg">
+            <img src="{% static 'img/error404.png' %}" alt="error">
+        </div>
+        <h1 class="rederror">ERROR 404</h1>
+        <p>Վերադառնալ դեպի <a href="/">Գլխավոր էջ</a></p>
+    </section>
+{% endblock %}

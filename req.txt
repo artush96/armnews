@@ -1,4 +1,9 @@
 Django==2.2.2
+django-autoslug==1.9.5.dev0
+django-modeladmin-reorder==0.3.1
+django-summernote==0.8.11.4
+
 Pillow==6.0.0
 pytz==2019.1
+
 sqlparse==0.3.0
