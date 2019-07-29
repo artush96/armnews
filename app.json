@@ -1,0 +1,16 @@
+{
+  "addons": [
+    "heroku-postgresql"
+  ],
+  "buildpacks": [
+
+  ],
+  "env": {
+  },
+  "formation": {
+  },
+  "name": "armnews",
+  "scripts": {
+  },
+  "stack": "heroku-18"
+}
